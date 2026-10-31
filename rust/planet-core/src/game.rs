@@ -81,6 +81,9 @@ pub struct Game {
     pub shake: f64,
     /// prefers-reduced-motion (`st.calm`): the screen doesn't shake, and the shake's random draw isn't made
     pub calm: bool,
+    /// the widget shows a saga boss out on your desktop for a while: the renderer leaves his sprite off the planet (his
+    /// bar and name stay). Never saved; game.js has no such thing
+    pub boss_away: bool,
     /// `ui.event` toasts (text, ms), oldest first; the HUD bridge drains them
     pub events: Vec<(String, f64)>,
     pub cam: Cam,
@@ -167,6 +170,7 @@ impl Game {
             last_click: -9.0,
             shake: 0.0,
             calm: false,
+            boss_away: false,
             events: Vec::new(),
             cam: Cam::new(200.0, 134.0), // the harness's 600×400 canvas in game.js pixels; the HUD bridge resizes it
             frame3: Frame::new(),
